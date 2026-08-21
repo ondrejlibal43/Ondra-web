@@ -364,23 +364,23 @@
           <a class="c-link" href="mailto:ondrej.libal43@gmail.com">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
             ondrej.libal43@gmail.com
-<!-- Kontejner pro kalendář Ondřeje Líbala -->
-<div id="cal-booking-embed" style="width:100%; height:100%; min-height:700px; overflow:scroll;"></div>
-
-<!-- Kód pro inicializaci Cal.com -->
+<!-- Cal inline embed code begins -->
+<div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-uvodni-setkani-online"></div>
 <script type="text/javascript">
-  (function (C, A, L) { _ca = C.Cal || function () { var r = _ca.q; r.push(arguments); }; _ca.q = _ca.q || []; C.Cal = C.Cal || _ca; $(A).on("load", function () { var s = A.createElement("script"), e = A.getElementsByTagName("script"); s.async = true; s.src = L; e.parentNode.insertBefore(s, e); }); })(window, document, "https://cal.com");
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "uvodni-setkani-online", {origin:"https://app.cal.com"});
+Cal.config = Cal.config || {};
+Cal.config.forwardQueryParams = true;
 
-  Cal("init", {origin: "https://app.cal.com"});
-
-  Cal("inline", {
-    elementOrSelector: "#cal-booking-embed",
-    calLink: "ondrej-libal-xdyund",
-    config: {"layout":"month_view"}
+  Cal.ns["uvodni-setkani-online"]("inline", {
+    elementOrSelector:"#my-cal-inline-uvodni-setkani-online",
+    config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+    calLink: "ondrej-libal-xdyund/uvodni-setkani-online",
   });
 
-  Cal("ui", {"styles":{"etp":{"themeMode":"light"}},"hideEventTypeDetails":false,"layout":"month_view"});
-</script>
+  Cal.ns["uvodni-setkani-online"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+  </script>
+  <!-- Cal inline embed code ends -->
         </div>
       </div>
     </section>
